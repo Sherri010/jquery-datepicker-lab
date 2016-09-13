@@ -13,12 +13,13 @@ $("#todayDate").html(m_names[curr_month] + ". " + curr_date + ", " + curr_year);
 // Use jQuery to grab the element with an id of "datepicker" and call .datepicker() on it:
        $('#datepicker').datepicker() ;
 // _____
-
+var oneDay=24*60*60*1000;
 
 // 6. Now we need to create a function daysLeft()
-function daysLeft(){
+function daysLeft(now,futur){
      var a=$('#datepicker').datepicker('getDate').getTime();
-    console.log(a);
+     var numDays=Math.round(Math.abs((a-today.getTime())/oneDay+1));
+    console.log(numDays);
 }
 
  $('#datepicker').on('change',daysLeft);
