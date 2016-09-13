@@ -11,6 +11,8 @@ var resultString = "";
 
 function daysLeft() {
 	var a = $( "#datepicker" ).datepicker('getDate').getTime();
+
+  
 	var b = today.getTime();
 	// c = hours per day * minutes per hour * seconds per minute * ms per sec
 	var c = 24*60*60*1000;
