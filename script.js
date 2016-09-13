@@ -13,14 +13,14 @@ function daysLeft() {
     var a = $( "#datepicker" ).datepicker('getDate').getTime();
     var b = today.getTime();
     var c = 24*60*60*1000;
-    var diffDays = Math.round((a - b)/c);
+    var diffDays = Math.floor((a - b)/c)+1;
 
-    resultString = ("<p>You have " + diffDays + " days left!");
+  return diffDays;
 }
 
 $("#datepicker").on("change", function(){
-    daysLeft();
-    $("#result").html(resultString);
+    printResult(daysLeft());
+  //  $("#result").html(resultString);
 });
 
 
@@ -35,5 +35,9 @@ $("#datepicker").on("change", function(){
 // condition 5:  there is NO input and the day is tomorrow
 // condition 6:  there is NO input and the date is in the future.
 
-
-
+function printResult(result){
+    if(result == 1) {  $("#result").html("it's tomorrow"); }
+    if(result == 0) {  $("#result").html("it's today");}
+    if(result >1 ) {  $("#result").html(result +" days left!");}
+  if(result < 0)    $("#result").html("passed");
+  }
