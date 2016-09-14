@@ -10,15 +10,26 @@ $("#datepicker").datepicker();
 var resultString = "";
 
 function daysLeft() {
+
+
 	var a = $( "#datepicker" ).datepicker('getDate').getTime();
 
-  
+
 	var b = today.getTime();
 	// c = hours per day * minutes per hour * seconds per minute * ms per sec
 	var c = 24*60*60*1000;
 
 	// here we use the native Math object to solve a problem:
 	var diffDays = Math.round((a - b)/c);
+
+  //storing the number of days they select in the future:
+  if( diffDays > 0){
+  localStorage.setItem("futurDays", ( +localStorage.getItem("futurDays")+1));
+  $('#futur').html(localStorage.getItem("futurDays"));
+
+  }
+
+
 
 	if( $('input').val() ){
 		if (diffDays < 0 ) {
